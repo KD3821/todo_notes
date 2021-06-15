@@ -5,4 +5,4 @@ my_var = "Check it now!"
 # we print a var
 print(my_var)
 # plus one more commit
-print("Yeah!")
+print("We study GIT!")
