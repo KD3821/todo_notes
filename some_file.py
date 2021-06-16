@@ -15,3 +15,5 @@ print("Yo-Yo! " + other_var)
 print("New Try!")
 # one before last one
 print(" =) ")
+# my commit from VDS
+print("Hello from VDS")
