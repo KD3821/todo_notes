@@ -17,3 +17,5 @@ print("New Try!")
 print(" =) ")
 # my commit from VDS
 print("Hello from VDS")
+# answer from local
+print("Hello to you too!")
