@@ -9,3 +9,5 @@ print("We study GIT!")
 # Hello, just a few lines from me (some edits done)
 other_var = my_var + " TheFunkSoBrother"
 print(other_var)
+# 3rd branch - MINITEST
+print("Yo-Yo! " + other_var)
