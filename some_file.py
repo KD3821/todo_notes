@@ -6,6 +6,6 @@ my_var = "Check it out now!"
 print(my_var)
 # plus one more commit
 print("We study GIT!")
-# Hello, just few lines from me
-other_var = my_var + "TheFunkSoBrother"
+# Hello, just a few lines from me (some edits done)
+other_var = my_var + " TheFunkSoBrother"
 print(other_var)
