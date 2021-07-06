@@ -2,19 +2,35 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from notes.models import Note
-from api.serializers import NoteSerializer, ThinNoteSerializer
+from api.serializers import NoteSerializer, ThinNoteSerializer, UserSerializer
 from rest_framework.views import APIView
-from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
+from rest_framework.mixins import (ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin,
+                                   DestroyModelMixin)
 from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.viewsets import ModelViewSet
+# from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from .permissions import IsAuthorOrReadOnly
+from rest_framework.permissions import IsAdminUser
+from django.contrib.auth import get_user_model
+
+
+class UserViewSet(ModelViewSet):
+    model = get_user_model()
+    queryset = model.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsAdminUser,)
+
 
 
 class NoteViewSet(ModelViewSet):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
-    http_method_names = ['get', 'post', 'put']
+    permission_classes = (IsAuthorOrReadOnly,)
+    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    # http_method_names = ['get', 'post', 'put', 'delete']
 
     def list(self, request, *args, **kwargs):
+        # notes = Note.objects.filter(author=request.user.id)
         notes = Note.objects.all()
         context = {'request': request}
         serializer = ThinNoteSerializer(notes, many=True, context=context)

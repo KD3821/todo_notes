@@ -1,6 +1,27 @@
-from rest_framework.serializers import (ModelSerializer, Serializer, CharField, IntegerField, HyperlinkedIdentityField,
-                                        SerializerMethodField)
+from rest_framework.serializers import (ModelSerializer, Serializer, CharField, IntegerField,
+                                        HyperlinkedIdentityField, SerializerMethodField)
 from notes.models import Note
+from django.contrib.auth import get_user_model
+
+
+class UserSerializer(ModelSerializer):
+
+    class Meta:
+        model = get_user_model()
+        queryset = model.objects.all()
+        fields = ('id', 'email', 'password', 'name', 'admin', 'staff', 'is_active')
+        extra_kwargs ={'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        password = validated_data.pop('password', '')
+        user = self.Meta.model(**validated_data)
+        user.set_password(password)
+        user.save()
+        return user
+
+    def update(self, instance, validated_data):
+        instance.set_password(validated_data.pop('password', ''))
+        return super().update(instance, validated_data)
 
 
 class NoteSerializer(ModelSerializer):
