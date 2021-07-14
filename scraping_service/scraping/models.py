@@ -3,6 +3,8 @@ from django.db.models import CharField
 from .utils import from_cyrillic_to_eng
 
 
+def default_urls():
+    return {"superjob": "", "careerist": "", "jooble": ""}
 
 class City(models.Model):
     name = CharField(max_length=50, verbose_name='Название населенного пункта', unique=True)
@@ -55,3 +57,18 @@ class Vacancy(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Error(models.Model):
+    timestamp = models.DateTimeField(auto_now_add=True)
+    data = models.JSONField()
+
+
+
+class Url(models.Model):
+    city = models.ForeignKey('City', on_delete=models.CASCADE, verbose_name='Город')
+    language = models.ForeignKey('Language', on_delete=models.CASCADE, verbose_name='Язык программирования')
+    url_data = models.JSONField(default=default_urls)
+
+    class Meta:
+        unique_together = ("city", "language")
