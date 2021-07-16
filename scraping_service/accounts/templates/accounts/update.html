@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block title %} Updater {% endblock %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <h4 class="my-2">Настройки для рассылки:</h4>
+        <form method="POST" action="" >
+        <div class="mb-3">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

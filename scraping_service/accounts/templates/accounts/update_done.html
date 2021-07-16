@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block title %} Updater {% endblock %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <h4 class="my-8">СОХРАНЕННЫЕ НАСТРОЙКИ:</h4>
+        <div>
+            <p class="my-6">
+                Пользователь: {{ user.email }}<br>
+                Город: {{ user.city }}<br>
+                Специализация: {{ user.language }}<br>
+                Рассылка:
+                {% if user.send_mail == 'True' %}
+                    активирована
+                {% else %}
+                    НЕ активирована
+                {% endif %}
+            </p>
+        <h6 class="my-4">(Вы можете изменить настройки в любой момент)</h6>
+        <form method="POST" action="" >
+        <div class="mb-3">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-primary">Изменить настройки</button>
+        </form>
+        <form method="POST" action="{% url 'accounts:delete' %}" >
+        <div class="mb-3">
+            <h6 class="my-4">(Вы можете удалить свой профиль в любой момент)</h6>
+            {% csrf_token %}
+        </div>
+        <button type="submit" class="btn btn-danger">Удалить профиль</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
