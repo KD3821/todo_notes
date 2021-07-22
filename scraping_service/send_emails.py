@@ -9,7 +9,7 @@ sys.path.append(proj)
 os.environ["DJANGO_SETTINGS_MODULE"] = "scraping_service.settings"
 
 django.setup()
-from scraping.models import Vacancy, Error, Url
+from scraping.models import Vacancy, Error, Url, City, Language
 from scraping_service.settings import EMAIL_HOST_USER
 ADMIN_USER = EMAIL_HOST_USER
 
@@ -58,20 +58,38 @@ _html = ''
 
 if qs.exists():
     error = qs.first()
-    data = error.data
+    data = error.data.get('errors', [])
     for i in data:
-        _html += f'<p><a href="{i["url"]}">Error: {i["title"]}</a></p><br>'
+        _html += '<h2>Ошибки скрапинга</h2>'
+        _html += f'<p><a href="{i["url"]}"> Error: {i["title"]}</a></p><br>'
     subject = f"Ошибки скрапинга {today}"
     text_content = f"Ошибки скрапинга {today}"
+
+    data = error.data.get('user_data')
+    if data:
+        _html += '<hr>'
+        _html += '<h2>Пожелания пользователей</h2>'
+        for i in data:
+            _html += f'<p>Город: {i["city"]}, Специализация: {i["language"]}, email: {i["email"]}</p><br>'
+        subject = f"Ошибки скрапинга {today} "
+        text_content = f"Ошибки скрапинга {today} "
 
 qs = Url.objects.all().values('city', 'language')
 urls_dict = {(i['city'], i['language']): True for i in qs}
 urls_err = ''
 for keys in users_dict.keys():
     if keys not in urls_dict:
-        urls_err += f'<p>Для города { keys[0] } и специализации { keys[1] } отсутствуют urls</p><br>'
+        if keys[0] and keys[1]:
+            qs_c = City.objects.filter(id=keys[0]).values()
+            city_err = qs_c.get()['name']
+            qs_l = Language.objects.filter(id=keys[1]).values()
+            language_err = qs_l.get()['name']
+            urls_err += f'<p>Для города {city_err} и специализации {language_err} отсутствуют urls</p><br>'
+            # urls_err += f'<p>Для города { keys[0] } и специализации { keys[1] } отсутствуют urls</p><br>'
 if urls_err:
     subject += 'Отсутствуют urls'
+    _html += '<hr>'
+    _html += '<h2>Отсутствуют URLs</h2>'
     _html += urls_err
 
 if subject:

@@ -18,4 +18,28 @@
     </div>
 </div>
 
+<div class="row-5">
+    <div class="col-md-8 mx-auto">
+        <p class="my-2">Если Вы не нашли необходимую комбинацию "Город-Специализация",
+            заполните форму ниже с Вашими пожеланиями. После добавления на сайт запрашиваемой Вами
+            комбинации администрация сайта проинформирует Вас по электронной почте.</p>
+        <p>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapsed" aria-expanded="false" aria-controls="collapseExample">
+            Открыть форму
+          </button>
+        </p>
+        <div class="collapse" id="collapsed">
+          <div class="card card-body">
+            <form method="POST" action="{% url 'accounts:contact' %}" >
+                <div class="form-group">
+                    {% csrf_token %}
+                    {{ contact_form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-info">Запросить</button>
+            </form>
+          </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

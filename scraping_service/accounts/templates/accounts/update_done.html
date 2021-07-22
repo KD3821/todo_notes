@@ -14,12 +14,13 @@
                 Город: {{ user.city }}<br>
                 Специализация: {{ user.language }}<br>
                 Рассылка:
-                {% if user.send_mail == 'True' %}
+                {% if user.send_email == True %}
                     активирована
                 {% else %}
                     НЕ активирована
                 {% endif %}
             </p>
+        </div>
         <h6 class="my-4">(Вы можете изменить настройки в любой момент)</h6>
         <form method="POST" action="" >
         <div class="mb-3">
