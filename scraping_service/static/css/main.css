@@ -1,0 +1,12 @@
+@font-face {
+    font-family: DenkOne;
+    scraping_service: url(../fonts/DenkOne-Regular.ttf);
+}
+#brand {
+    font-family: DenkOne;
+    color: #FFFFFF;
+}
+#nav-link {
+    font-family: DenkOne;
+    color: #FFFFFF;
+}

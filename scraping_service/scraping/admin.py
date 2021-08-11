@@ -4,12 +4,12 @@ from .models import City, Language, Vacancy, Error, Url
 admin.site.register(City)
 admin.site.register(Language)
 # admin.site.register(Vacancy)
-admin.site.register(Url)
+# admin.site.register(Url)
+admin.site.register(Error)
 
-
-@admin.register(Error)
-class ErrorAdmin(admin.ModelAdmin):
-    list_display = ['timestamp', 'data']
+# @admin.register(Error)
+# class ErrorAdmin(admin.ModelAdmin):
+#     list_display = ['timestamp', 'data']
 
 
 @admin.register(Vacancy)
@@ -20,3 +20,8 @@ class VacancyAdmin(admin.ModelAdmin):
     #              ('Permissions', {'fields': ('admin', 'staff')}),
     #              ('Settings', {'fields': ('city', 'language', 'send_email')})
     #              ]
+
+
+@admin.register(Url)
+class UrlAdmin(admin.ModelAdmin):
+    list_display = ['city', 'language']

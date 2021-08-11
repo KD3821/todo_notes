@@ -1,0 +1,123 @@
+[
+{
+  "model": "scraping.city",
+  "pk": 1,
+  "fields": {
+    "name": "Санкт-Петербург",
+    "slug": "sаnkt-peterburg"
+  }
+},
+{
+  "model": "scraping.city",
+  "pk": 2,
+  "fields": {
+    "name": "Москва",
+    "slug": "moskvа"
+  }
+},
+{
+  "model": "scraping.city",
+  "pk": 3,
+  "fields": {
+    "name": "Нижний Новгород",
+    "slug": "nizhniy_novgorod"
+  }
+},
+{
+  "model": "scraping.city",
+  "pk": 4,
+  "fields": {
+    "name": "Иркутск",
+    "slug": "irkutsk"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "slug": "python"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 2,
+  "fields": {
+    "name": "Java",
+    "slug": "java"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 3,
+  "fields": {
+    "name": "Golang",
+    "slug": "golang"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 1,
+  "fields": {
+    "url": "https://spb.superjob.ru/vakansii/golang-razrabotchik-37793794.html",
+    "title": "Golang разработчик",
+    "company": "Smart Hiring PRO",
+    "description": "Мы ищем Golang разработчика в высоконагруженный международный образовательный проект. Первостепенная задача - масштабирование существующей платформы под высокие нагрузки.\r\n️Требования:\r\nОт 3-х лет бэкенд разработки\r\nОпыт коммерческой разработки на Golang;\r\nОпыт разработки высоконагруженных систем на микросервисной архитектуре;\r\nNoSQL (MongoDB);\r\nKafka, RabbitMQ, etc.",
+    "city": 1,
+    "language": 3,
+    "timestamp": "2021-07-08"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 2,
+  "fields": {
+    "url": "https://spb.superjob.ru/vakansii/java-programmist-37010802.html",
+    "title": "Java-программист",
+    "company": "Медицинская компания ЛабСтори",
+    "description": "Медицинская компания «ЛабСтори» создана в 2009 году. За это время мы открыли 13 центров в пяти городах России и вошли в тройку лидеров медицинской диагностики.\r\nВ связи с расширением и развитием нам требуется программист.\r\nОбязанности:\r\n- Анализ, модернизация и разработка имеющихся и новых программных продуктов;\r\n- Работа с backend, с уклоном fullstack;\r\n- Оптимизация программного кода.",
+    "city": 1,
+    "language": 2,
+    "timestamp": "2021-07-08"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 3,
+  "fields": {
+    "url": "https://spb.superjob.ru/vakansii/razrabotchik-java-37733430.html",
+    "title": "Разработчик Java",
+    "company": "Токио Сити",
+    "description": "В задачи входит:\r\nДоработка системы электронного документооборота ТЕЗИС;\r\nРазработка Java-приложений на платформе CUBA;\r\nРазработка механизмов интеграции со сторонними информационными системами;\r\nРазработка и настройка процессов на движке ТЕЗИС;\r\nТехническая поддержка пользователей (3-я линия);\r\nУчастие в разработке алгоритмов и технических заданий.",
+    "city": 1,
+    "language": 2,
+    "timestamp": "2021-07-08"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 4,
+  "fields": {
+    "url": "https://spb.superjob.ru/vakansii/web-programmist-37755125.html",
+    "title": "Web-программист",
+    "company": "Калкулэйт",
+    "description": "Обязанности:\r\nРазработка высоконагруженных web-проектов.\r\nТребования:\r\nЗнания: Python, Django, HTML, CSS, SQL, JavaScript, jQuery, Ajax, XML, JSON, DHTML.\r\nПри отсутствии знаний Python обязателен опыт работы с одним или несколькими PHP фреймворками (Symfony, Zend Framework, Kohana, Yii)\r\nОпыт работы с Nginx.\r\nНавыки верстки под современные браузеры (блочная вёрстка, HTML5 + CSS3).\r\nБазовые навыки администрирования Unix систем.",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2021-07-08"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 5,
+  "fields": {
+    "url": "https://spb.superjob.ru/vakansii/prepodavatel-python-na-distancionnyj-kurs-37944152.html",
+    "title": "Преподаватель Python на дистанционный курс",
+    "company": "Технопарк в сфере высоких технологий «ИТ-парк»",
+    "description": "Учебный центр \"ИТ-академия\" ищет преподавателя Python\r\n\r\nИТ-академия – профильная подготовка ИТ-специалистов всего за 3-6 месяцев обучения. Ключевой особенностью деятельности ИТ-академии является предоставление образовательных курсов как для взрослой аудитории, так и для школьников по востребованным ИТ-направлениям.\r\nОбязанности:\r\nРазработка (план) курса. Мы поможем, направим, доработаем.\r\nПроведение курс по направлению Python\r\nВзаимодействие со студентами: отвечать на вопросы, проверять домашние задания (делать code review каждого задания), помогать решать проблемы, направлять и подсказывать.",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2021-07-08"
+  }
+}
+]

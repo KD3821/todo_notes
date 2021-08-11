@@ -30,7 +30,7 @@ def superjob(url, city=None, language=None):
             if not new_jobs:
                 main_div = soup.find('div', attrs={'class': '_1ID8B'})
                 if main_div:
-                    div_lst = main_div.find_all('div', attrs={'class': 'iJCa5 f-test-vacancy-item _1fma_ _2nteL'})
+                    div_lst = main_div.find_all('div', attrs={'class': 'Fo44F QiY08 LvoDO'})
                     for div in div_lst:
                         title = div.find('div', attrs={'class': '_1h3Zg _2rfUm _2hCDz _21a7u'})
                         href = title.a['href']

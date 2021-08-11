@@ -3,25 +3,22 @@
 
 {% block title %} Home {% endblock %}
 {% block content %}
-    {% for obj in object_list %}
-    <div class="card my-3" xmlns="http://www.w3.org/1999/html">
-      <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
-      <div class="card-body">
-          <h4>{{obj.company}}</h4>
-          <p class="card-text">{{ obj.description }}</p>
-          <p>{{obj.city.name}} | {{obj.language.name}} | <small>{{obj.timestamp|date:"D d-m-Y"}}</small> </p>
-      </div>
-    </div>
 
-    {% empty %}
-        <div class="row">
-            <div class="col-md-6 mx-auto">
-            <h3>К сожалению, ничего не найдено...</h3>
-            </div>
-        </div>
-    {% endfor %}
+
+
 
     {% if object_list %}
+        <h3 class="my-4 text-center"> Результаты поиска по Вашему запросу: </h3>
+        {% for obj in object_list %}
+        <div class="card my-3" xmlns="http://www.w3.org/1999/html">
+          <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
+          <div class="card-body">
+              <p class="card-text">{{ obj.description }}</p>
+              <p><strong>{{obj.company}}</strong></p>
+              <p>{{obj.city.name}} | {{obj.language.name}} | <small>{{obj.timestamp|date:"D d-m-Y"}}</small> </p>
+          </div>
+        </div>
+        {% endfor %}
         <div class="row">
             <div class="col">
                 <nav aria-label="Page navigation example">
@@ -47,6 +44,12 @@
                         {% endif %}
                     </ul>
                 </nav>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+            <h3>К сожалению, ничего не найдено...</h3>
             </div>
         </div>
     {% endif %}

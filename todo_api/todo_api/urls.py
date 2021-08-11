@@ -1,4 +1,4 @@
-"""scraping_service URL Configuration
+"""todo_api URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -14,15 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-import debug_toolbar
 from django.urls import path, include
-from scraping.views import list_view, home_view
+from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView,)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('__debug__/', include(debug_toolbar.urls)),
-    path('list/', list_view, name='list'),
-    path('', home_view, name='home'),
-    path('accounts/', include(('accounts.urls', 'accounts.views'), 'accounts')),
-    path('api/v1/', include('scraping.api.urls')),
+    path('api/', include('api.urls')),
+    path('api-auth/', include('rest_framework.urls', 'rest_framework')),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
